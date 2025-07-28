@@ -394,7 +394,9 @@
             Please fix the errors below and try again.
         </div> -->
 
-        <form id="registerForm" action="#" method="POST">
+        <form id="registerForm" action="{{route('store')}}" method="POST">
+            @csrf
+            @method('POST')
             <div class="form-row">
                 <div class="form-group">
                     <label for="first_name">First Name</label>

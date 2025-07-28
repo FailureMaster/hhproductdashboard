@@ -289,7 +289,8 @@
             Invalid email or password. Please try again.
         </div> -->
 
-        <form id="loginForm" action="#" method="POST">
+        <form id="loginForm" action="{{route('process.login')}}" method="POST">
+            @csrf
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <div class="input-wrapper">
