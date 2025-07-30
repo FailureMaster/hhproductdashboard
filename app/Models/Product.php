@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    protected $guarded = ['id'];
+
+    protected $casts = [
+        'created_at'
+    ];
 }

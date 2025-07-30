@@ -12,3 +12,5 @@ Route::get('/logout', [AuthController::class, 'destroy'])->name('logout')->middl
 
 
 Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
+Route::post('/store', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
