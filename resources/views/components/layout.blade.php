@@ -374,6 +374,20 @@
     </style>
 </head>
 <body>
+
     {{$slot}}
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        @if(session('message'))
+        Toastify({
+            text: "{{ session('message') }}",
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        }).showToast();
+        @endif
+    </script>
 </body>
 </html>

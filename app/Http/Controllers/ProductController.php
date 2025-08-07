@@ -27,4 +27,20 @@ class ProductController extends Controller
 
     }
 
+    public function edit(Product $product){
+        return view('product.edit', compact('product'));
+    }
+
+     public function update(Product $product, Request $request){
+        $product->update($request->validate([
+            'name'          => ['required'],
+            'description'   => ['required'],
+            'price'         => ['required'],
+            'inventory'     => ['required'],
+        ]));
+
+        return back()->with('message', "Successfully updated");
+
+    }
+
 }

@@ -14,3 +14,5 @@ Route::get('/logout', [AuthController::class, 'destroy'])->name('logout')->middl
 Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
 Route::post('/store', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
+Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('product.edit')->middleware('auth');
+Route::put('/update/{product}', [ProductController::class, 'update'])->name('product.update')->middleware('auth');

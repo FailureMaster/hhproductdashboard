@@ -418,7 +418,7 @@
                                         <td><span class="inventory-badge inventory-high">{{$product->inventory}}</span></td>
                                         <td>{{$product->created_at->format('M j, Y')}}</td>
                                         <td class="actions">
-                                            <a href="{{}}" class="btn btn-sm btn-primary">✏️ Edit</a>
+                                            <a href="{{route('product.edit', $product->id)}}" class="btn btn-sm btn-primary">✏️ Edit</a>
                                             <a href="" class="btn btn-sm btn-danger">🗑️ Delete</a>
                                         </td>
                                     </tr>
