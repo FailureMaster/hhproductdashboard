@@ -10,6 +10,13 @@
         </div>
 
         <div class="container">
+           @if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
 
             <a href="{{route('dashboard')}}" class="btn btn-secondary back-btn">⬅️ Back to Products</a>
 
