@@ -1,6 +1,5 @@
-<x-dashboard>
-       <!-- Product List Page -->
-    <div id="listPage" class="page-nav active">
+<x-layout>
+        <div id="listPage" class="page-nav active">
         <div class="header">
             <div class="header-content">
                 <div>
@@ -60,4 +59,4 @@
             </div>
         </div>
     </div>
-</x-dashboard>
+</x-layout>
