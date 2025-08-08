@@ -6,17 +6,18 @@
                     <h1>Add Product</h1>
                     <p>Update product information</p>
                 </div>
+
+                <div class="header-actions">
+                    <a href="{{route('dashboard')}}" class="btn btn-secondary">Dashboard</a>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-primary" >Logout</button>
+                    </form>
+                </div>
             </div>
         </div>
 
         <div class="container">
-           @if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-@endif
 
             <a href="{{route('dashboard')}}" class="btn btn-secondary back-btn">⬅️ Back to Products</a>
 
@@ -48,16 +49,6 @@
                             <div class="form-group">
                                 <label for="add_inventory">Current Inventory</label>
                                 <input type="number" id="add_inventory" name="inventory" class="form-control" min="0" required value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="edit_category">Category</label>
-                                <select id="edit_category" name="category" class="form-control">
-                                    <option value="">Select Category</option>
-                                    <option value="clothing" selected>Clothing</option>
-                                    <option value="accessories">Accessories</option>
-                                    <option value="electronics">Electronics</option>
-                                    <option value="other">Other</option>
-                                </select>
                             </div>
                         </div>
 

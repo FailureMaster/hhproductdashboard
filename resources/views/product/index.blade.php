@@ -7,7 +7,10 @@
                     <p>Manage your product inventory and details</p>
                 </div>
                 <div class="header-actions">
-                    <a href="#" class="btn btn-secondary">Dashboard</a>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary" >Logout</button>
+                    </form>
                     <a href="{{route('product.create')}}" class="btn btn-primary">➕ Add Product</a>
                 </div>
             </div>
