@@ -11,4 +11,9 @@ class Product extends Model
     protected $casts = [
         'created_at'
     ];
+
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
