@@ -4,11 +4,11 @@
             <div class="header-content">
                 <div>
                     <h1>Add Product</h1>
-                    <p>Update product information</p>
+                    <p>Add product information</p>
                 </div>
 
                 <div class="header-actions">
-                    <a href="{{route('dashboard')}}" class="btn btn-secondary">Dashboard</a>
+                    <a href="{{route('dashboard.admin')}}" class="btn btn-secondary">Dashboard</a>
                     <form action="{{route('logout')}}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-primary" >Logout</button>
@@ -19,11 +19,11 @@
 
         <div class="container">
 
-            <a href="{{route('dashboard')}}" class="btn btn-secondary back-btn">⬅️ Back to Products</a>
+            <a href="{{route('dashboard.admin')}}" class="btn btn-secondary back-btn">⬅️ Back to Products</a>
 
             <div class="card">
                 <div class="card-header">
-                    <h2>Update Product Information</h2>
+                    <h2>Add Product Information</h2>
                     <p>Modify the details for this product</p>
                 </div>
                 <div class="card-body">
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-actions">
-                            <a href="{{route('dashboard')}}"  onclick="showListPage()" class="btn btn-secondary">Cancel</a>
+                            <a href="{{route('dashboard.admin')}}"  onclick="showListPage()" class="btn btn-secondary">Cancel</a>
                             <button type="submit" class="btn btn-success">💾 Save</button>
                         </div>
                     </form>

@@ -23,7 +23,7 @@ class ProductController extends Controller
         $products['user_id'] = Auth::id();
 
        Product::create($products);
-       return redirect('dashboard');
+       return redirect('dashboard/admin');
 
     }
 
@@ -39,7 +39,7 @@ class ProductController extends Controller
             'inventory'     => ['required'],
         ]));
 
-        return back()->with('message', "Successfully updated");
+        return to_route('dashboard.admin')->with('message', "Successfully updated");
 
     }
 

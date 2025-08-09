@@ -9,7 +9,7 @@
         </div>
 
         <div class="container">
-            <a href="{{route('dashboard')}}" class="btn btn-secondary back-btn">⬅️ Back to Products</a>
+            <a href="{{route('dashboard.admin')}}" class="btn btn-secondary back-btn">⬅️ Back to Products</a>
 
             <div class="card">
                 <div class="card-header">

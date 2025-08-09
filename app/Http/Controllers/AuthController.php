@@ -29,7 +29,7 @@ class AuthController extends Controller
 
         request()->session()->regenerate();
 
-        return redirect('dashboard');
+        return redirect('dashboard/admin');
 
     }
 
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
     public function store(StoreUserRequest $req){
         User::create($req->validated());
-        return redirect('dashboard');
+        return redirect('dashboard/admin');
     }
 
 
