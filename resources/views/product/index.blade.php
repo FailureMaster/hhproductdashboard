@@ -11,7 +11,9 @@
                         @csrf
                         <button type="submit" class="btn btn-secondary" >Logout</button>
                     </form>
+                    @can('is-admin')
                     <a href="{{route('product.create')}}" class="btn btn-primary">➕ Add Product</a>
+                    @endcan
                 </div>
             </div>
         </div>
@@ -33,8 +35,10 @@
                                     <th>Product Name</th>
                                     <th>Price</th>
                                     <th>Inventory</th>
-                                    <th>Created</th>
-                                    <th>Actions</th>
+                                    @can('is-admin')
+                                        <th>Created</th>
+                                        <th>Actions</th>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,15 +47,18 @@
                                         <td class="product-name">{{$product->name}}</td>
                                         <td class="product-price">{{$product->price}}</td>
                                         <td><span class="inventory-badge inventory-high">{{$product->inventory}}</span></td>
-                                        <td>{{$product->created_at->format('M j, Y')}}</td>
-                                        <td class="actions">
-                                            <a href="{{route('product.edit', $product->id)}}" class="btn btn-sm btn-primary">✏️ Edit</a>
-                                            <form action="{{route('product.delete', $product->id)}}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">🗑️ Delete</button>
-                                            </form>
-                                        </td>
+                                        @can('is-admin')
+
+                                            <td>{{$product->created_at->format('M j, Y')}}</td>
+                                            <td class="actions">
+                                                <a href="{{route('product.edit', $product->id)}}" class="btn btn-sm btn-primary">✏️ Edit</a>
+                                                <form action="{{route('product.delete', $product->id)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">🗑️ Delete</button>
+                                                </form>
+                                            </td>
+                                        @endcan
                                     </tr>
                                 @endforeach
 

@@ -11,9 +11,12 @@ Route::post('/register', [AuthController::class, 'store'])->name('store')->middl
 Route::post('/logout', [AuthController::class, 'destroy'])->name('logout')->middleware('auth');
 
 
+Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard/admin', [ProductController::class, 'index'])->name('dashboard.admin')->middleware('auth');
-Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
-Route::post('/store', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
-Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('product.edit')->middleware('auth');
-Route::put('/update/{product}', [ProductController::class, 'update'])->name('product.update')->middleware('auth');
-Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('product.delete')->middleware('auth');
+Route::middleware(['auth', 'can:is-admin'])->group(function(){
+    Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
+    Route::post('/store', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
+    Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('product.edit')->middleware('auth');
+    Route::put('/update/{product}', [ProductController::class, 'update'])->name('product.update')->middleware('auth');
+    Route::delete('/delete/{product}', [ProductController::class, 'destroy'])->name('product.delete')->middleware('auth');
+});
