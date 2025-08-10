@@ -67,18 +67,20 @@
                 </div>
 
                 <!-- Existing Reviews -->
+                @foreach ($product->reviews as $review)
+
                 <div class="reviews-list">
                     <!-- Review 1 -->
                     <div class="review-item">
                         <div class="review-header">
-                            <span class="reviewer-name">Michael Choi wrote:</span>
-                            <span class="review-time">7 hours ago</span>
+                            <span class="reviewer-name">{{$review->user->first_name}}: </span>
+                            <span class="review-time">{{$review->created_at->diffForHumans()}}</span>
                         </div>
                         <div class="review-content">
-                            Super cute! Will buy again.
+                            {{$review->content}}
                         </div>
 
-                        <!-- Comments on this review -->
+                        {{-- <!-- Comments on this review -->
                         <div class="comments-section">
                             <div class="comment-item">
                                 <div class="comment-header">
@@ -99,73 +101,12 @@
                                     required></textarea>
                                 <button type="submit" class="comment-submit">Post</button>
                             </form>
-                        </div>
+                        </div> --}}
                     </div>
 
-                    <!-- Review 2 -->
-                    <div class="review-item">
-                        <div class="review-header">
-                            <span class="reviewer-name">John Doe wrote:</span>
-                            <span class="review-time">2 days ago</span>
-                        </div>
-                        <div class="review-content">
-                            Great quality material and fast shipping. Highly recommend!
-                        </div>
 
-                        <!-- Add Comment Form -->
-                        <div class="add-comment">
-                            <form class="comment-form" action="#" method="POST">
-                                <textarea
-                                    class="comment-input"
-                                    name="content"
-                                    placeholder="Write a comment..."
-                                    required></textarea>
-                                <button type="submit" class="comment-submit">Post</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Review 3 -->
-                    <div class="review-item">
-                        <div class="review-header">
-                            <span class="reviewer-name">Sarah Wilson wrote:</span>
-                            <span class="review-time">1 week ago</span>
-                        </div>
-                        <div class="review-content">
-                            Perfect fit and very comfortable. Love the design!
-                        </div>
-
-                        <!-- Comments on this review -->
-                        <div class="comments-section">
-                            <div class="comment-item">
-                                <div class="comment-header">
-                                    <span class="commenter-name">VBB Team wrote:</span>
-                                    <span class="comment-time">6 days ago</span>
-                                </div>
-                                <div class="comment-content">Thanks for the feedback Sarah! 😊</div>
-                            </div>
-                            <div class="comment-item">
-                                <div class="comment-header">
-                                    <span class="commenter-name">Mike Johnson wrote:</span>
-                                    <span class="comment-time">5 days ago</span>
-                                </div>
-                                <div class="comment-content">I agree! Just ordered mine too.</div>
-                            </div>
-                        </div>
-
-                        <!-- Add Comment Form -->
-                        <div class="add-comment">
-                            <form class="comment-form" action="#" method="POST">
-                                <textarea
-                                    class="comment-input"
-                                    name="content"
-                                    placeholder="Write a comment..."
-                                    required></textarea>
-                                <button type="submit" class="comment-submit">Post</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
