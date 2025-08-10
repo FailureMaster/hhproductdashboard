@@ -13,6 +13,7 @@ Route::post('/logout', [AuthController::class, 'destroy'])->name('logout')->midd
 
 Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard/admin', [ProductController::class, 'index'])->name('dashboard.admin')->middleware('auth');
+Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('product.show')->middleware('auth');
 Route::middleware(['auth', 'can:is-admin'])->group(function(){
     Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
     Route::post('/store', [ProductController::class, 'store'])->name('product.store')->middleware('auth');

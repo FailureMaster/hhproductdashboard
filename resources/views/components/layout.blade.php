@@ -371,7 +371,9 @@
         .back-btn {
             margin-bottom: 20px;
         }
+
     </style>
+    @stack('style')
 </head>
 <body>
 

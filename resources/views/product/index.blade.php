@@ -44,7 +44,7 @@
                             <tbody>
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td class="product-name">{{$product->name}}</td>
+                                        <td class="product-name"><a href="{{route('product.show', $product->id)}}">{{$product->name}}</a></td>
                                         <td class="product-price">{{$product->price}}</td>
                                         <td><span class="inventory-badge inventory-high">{{$product->inventory}}</span></td>
                                         @can('is-admin')
