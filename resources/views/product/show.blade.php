@@ -55,7 +55,8 @@
                 <!-- Leave a Review Form -->
                 <div class="leave-review">
                     <h3>Leave a Review</h3>
-                    <form class="review-form" action="#" method="POST">
+                    <form class="review-form" action="{{route('review.store', $product)}}" method="POST">
+                        @csrf
                         <textarea
                             class="review-textarea"
                             name="content"
@@ -559,7 +560,7 @@
         </style>
     @endpush
 
-    <script>
+    {{-- <script>
         // Auto-resize textareas
         document.querySelectorAll('textarea').forEach(textarea => {
             textarea.addEventListener('input', function() {
@@ -592,5 +593,5 @@
                 this.style.transform = 'translateY(0)';
             });
         });
-    </script>
+    </script> --}}
 </x-layout>

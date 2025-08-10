@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'index'])->name('login')->middleware('guest');
@@ -14,6 +15,9 @@ Route::post('/logout', [AuthController::class, 'destroy'])->name('logout')->midd
 Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard/admin', [ProductController::class, 'index'])->name('dashboard.admin')->middleware('auth');
 Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('product.show')->middleware('auth');
+
+Route::post('/product/review/{product}', [ReviewController::class, 'store'])->name('review.store')->middleware('auth');
+
 Route::middleware(['auth', 'can:is-admin'])->group(function(){
     Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');
     Route::post('/store', [ProductController::class, 'store'])->name('product.store')->middleware('auth');
