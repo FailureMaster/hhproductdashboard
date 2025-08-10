@@ -28,8 +28,8 @@ class ProductController extends Controller
     }
 
     public function show(Product $product){
+        $product->load('reviews.product');
         return view('product.show', compact('product'));
-
     }
 
     public function edit(Product $product){
