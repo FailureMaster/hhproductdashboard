@@ -41,7 +41,7 @@
             <div class="product-description">
                 <h2 class="description-title">Description</h2>
                 <p class="description-text">
-                    Legit, comfortable VBB t-shirt available in any size.
+                    {{$product->description}}
                 </p>
             </div>
 
@@ -68,7 +68,7 @@
 
                 <!-- Existing Reviews -->
                 @foreach ($product->reviews as $review)
-
+                {{-- @dd($review) --}}
                 <div class="reviews-list">
                     <!-- Review 1 -->
                     <div class="review-item">
@@ -80,20 +80,23 @@
                             {{$review->content}}
                         </div>
 
-                        {{-- <!-- Comments on this review -->
-                        <div class="comments-section">
-                            <div class="comment-item">
-                                <div class="comment-header">
-                                    <span class="commenter-name">Karen Marie Igcasan wrote:</span>
-                                    <span class="comment-time">23 minutes ago</span>
+                        @foreach ($review->comments as $comment)
+                            <!-- Comments on this review -->
+                            <div class="comments-section">
+                                <div class="comment-item">
+                                    <div class="comment-header">
+                                        <span class="commenter-name">{{$comment->user->first_name}} wrote:</span>
+                                        <span class="comment-time">{{$comment->created_at->diffForHumans()}}</span>
+                                    </div>
+                                    <div class="comment-content">{{$comment->content}}</div>
                                 </div>
-                                <div class="comment-content">Thank you for buying!</div>
                             </div>
-                        </div>
+                        @endforeach
 
                         <!-- Add Comment Form -->
                         <div class="add-comment">
-                            <form class="comment-form" action="#" method="POST">
+                            <form class="comment-form" action="{{route('comment.store', $review)}}" method="POST">
+                                @csrf
                                 <textarea
                                     class="comment-input"
                                     name="content"
@@ -101,7 +104,7 @@
                                     required></textarea>
                                 <button type="submit" class="comment-submit">Post</button>
                             </form>
-                        </div> --}}
+                        </div>
                     </div>
 
 

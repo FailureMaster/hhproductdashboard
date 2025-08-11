@@ -20,4 +20,8 @@ class Review extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

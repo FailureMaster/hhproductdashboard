@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::get('/dashboard/admin', [ProductController::class, 'index'])->name('dashb
 Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('product.show')->middleware('auth');
 
 Route::post('/product/review/{product}', [ReviewController::class, 'store'])->name('review.store')->middleware('auth');
+Route::post('/product/{review}', [CommentController::class, 'store'])->name('comment.store')->middleware('auth');
 
 Route::middleware(['auth', 'can:is-admin'])->group(function(){
     Route::get('/create', [ProductController::class, 'create'])->name('product.create')->middleware('auth');

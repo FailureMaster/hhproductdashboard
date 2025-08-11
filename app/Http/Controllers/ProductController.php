@@ -28,7 +28,25 @@ class ProductController extends Controller
     }
 
     public function show(Product $product){
-        $product->load('reviews.product');
+    //    $product->load([
+    //         'reviews' => fn ($q) => $q->latest()
+    //             ->with([
+    //                 'usere',
+    //                 'comments' => fn ($c) => $c->latest()
+    //                     ->with('user:id,first_name,last_name'),
+    //             ]),
+    //     ]);
+
+
+    $product->load(
+        ['reviews' => fn($r) => $r->latest()
+                    ->with(['user', 'comments' => fn($q) => $q->latest()
+                        ->with('user')
+                        ])
+        ]
+    );
+
+        // dd($product);
         return view('product.show', compact('product'));
     }
 
