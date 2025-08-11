@@ -11,6 +11,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('process.login')->
 Route::get('/register', [AuthController::class, 'create'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store'])->name('store')->middleware('guest');
 Route::post('/logout', [AuthController::class, 'destroy'])->name('logout')->middleware('auth');
+Route::get('/users/edit/{user}', [AuthController::class, 'edit'])->name('edit.user')->middleware('auth');
+Route::put('/users/update/{user}', [AuthController::class, 'update'])->name('update.user')->middleware('auth');
+Route::put('/users/update/password/{user}', [AuthController::class, 'updatePassword'])->name('update.user.password')->middleware('auth');
 
 
 Route::get('/dashboard', [ProductController::class, 'index'])->name('dashboard')->middleware('auth');

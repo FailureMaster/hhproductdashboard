@@ -11,6 +11,7 @@
                         @csrf
                         <button type="submit" class="btn btn-secondary" >Logout</button>
                     </form>
+                    <a href="{{route('edit.user', Auth::id())}}" class="btn btn-primary">profile</a>
                     @can('is-admin')
                     <a href="{{route('product.create')}}" class="btn btn-primary">➕ Add Product</a>
                     @endcan
